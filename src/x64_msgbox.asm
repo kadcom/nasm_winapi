@@ -1,5 +1,5 @@
-; x64_msgbox
-; Show a message box with a title and message
+	; x64_msgbox
+	; Show a message box with a title and message
 
 section .data 
 	title db "Hello!",0
