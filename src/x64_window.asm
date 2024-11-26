@@ -67,7 +67,7 @@ wnd_proc:
 	xor rax, rax
 	jmp .ret
 
-	.def_window_proc:
+.def_window_proc:
 	call DefWindowProcA
 
 	.ret:
