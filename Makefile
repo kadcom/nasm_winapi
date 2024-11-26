@@ -16,7 +16,8 @@ BINDIR=bin
 !ENDIF
 
 PROGRAMS=$(BINDIR)\x64_msgbox.exe \
-				 $(BINDIR)\x64_window.exe
+				 $(BINDIR)\x64_window.exe \
+				 $(BINDIR)\x64_window_game.exe
 
 all: $(PROGRAMS)
 
@@ -26,10 +27,17 @@ $(BINDIR)\x64_msgbox.exe: $(OBJDIR)\x64_msgbox.obj
 $(BINDIR)\x64_window.exe: $(OBJDIR)\x64_window.obj
 	$(LINK) $(LINKFLAGS) /out:$@ $** $(LIBS)
 
+$(BINDIR)\x64_window_game.exe: $(OBJDIR)\x64_window_game.obj
+	$(LINK) $(LINKFLAGS) /out:$@ $** $(LIBS)
+
+
 $(OBJDIR)\x64_msgbox.obj: src/x64_msgbox.asm
 	$(NASM) $(NASMFLAGS) -o $@ $**
 
 $(OBJDIR)\x64_window.obj: src/x64_window.asm
+	$(NASM) $(NASMFLAGS) -o $@ $**
+
+$(OBJDIR)\x64_window_game.obj: src/x64_window_game.asm
 	$(NASM) $(NASMFLAGS) -o $@ $**
 
 clean:
