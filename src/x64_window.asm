@@ -57,7 +57,7 @@ section .text
 wnd_proc:
 	push rbp 
 	mov rbp, rsp
-	sub rsp, 48
+	sub rsp, 32 ; shadow space
 
 	cmp edx, WM_DESTROY    ; Compare with 32-bit part since message is UINT
 	jne .def_window_proc
