@@ -114,7 +114,7 @@ main:
 	jz .exit_error
 
 	; CreateWindowExA
-	sub rsp, 96           ; Space for parameters + shadow space
+	sub rsp, 64           ; Space for parameters + shadow space
 
 	xor rcx, rcx          ; dwExStyle
 	lea rdx, [rel class_name]
@@ -133,7 +133,7 @@ main:
 	call CreateWindowExA
 	mov [rel hWnd], rax
 
-	add rsp, 96           ; Restore stack
+	add rsp, 64           ; Restore stack
 
 	test rax, rax         ; Check if window creation failed
 	jz .exit_error
