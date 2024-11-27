@@ -1,9 +1,25 @@
 NASM=nasm 
-LINK=link 
+LINK=link
 
+# Check if DEBUG is defined
+!IFNDEF DEBUG
+DEBUG=1
+!ENDIF
+
+# NASM FLAGS for Debug and Release
+!IF $(DEBUG)
 NASMFLAGS=-f win64 -g -F cv8
+!ELSE
+NASMFLAGS=-f win64
+!ENDIF
 
-LINKFLAGS=/subsystem:windows /entry:main /debug
+# LINK FLAGS for Debug and Release
+LINKFLAGS=/subsystem:windows /entry:main /nologo 
+
+!IF $(DEBUG)
+LINKFLAGS=$(LINKFLAGS) /debug
+!ENDIF
+
 LIBS=kernel32.lib user32.lib gdi32.lib
 
 OBJDIR=obj

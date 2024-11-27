@@ -91,7 +91,6 @@ main:
 	rep stosb
 
 	; Fill wcex with proper alignment
-	lea rbx, [rel wcex]
 	mov dword [rel wcex.cbSize], WCEX_SIZE               ; cbSize
 	mov dword [rel wcex.style], CS_HREDRAW | CS_VREDRAW  ; style
 	lea rax, [rel wnd_proc]
